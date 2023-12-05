@@ -409,3 +409,32 @@ int main() {
 }
 ```
 Этот код сначала проверяет, больше ли x 5, затем меньше ли 5, и, наконец, если оба условия ложны, выводится, что x равен 5.
+
+Еще один пример:
+```C++
+#include <iostream>
+
+int main() {
+    setlocale(LC_ALL, "Russian");
+    int score;
+    std::cout << "Введите балл студента: ";
+    std::cin >> score;
+
+    if (score <= 100 && score >= 90) {
+        std::cout << "Оценка: отлично" << std::endl;
+    } else if (score < 90 && score >= 70) {
+        std::cout << "Оценка: хорошо" << std::endl;
+    }
+    else if (score < 70 && score >= 60) {
+        std::cout << "Оценка: удовлетвворительно" << std::endl;
+    }
+    else if (score == 0) {
+        std::cout << "Крайне неудовлетворительно" << std::endl;
+    }
+    else {
+        std::cout << "Оценка: неудовлетворительно" << std::endl;
+    }
+
+    return 0;
+}
+```
