@@ -438,3 +438,63 @@ int main() {
     return 0;
 }
 ```
+# Оператор switch
+```C++
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "Russian");
+
+    int day;
+    cout << "Введите цифру: " << endl;
+    cin >> day;
+
+    if (day == 1) {
+        cout << "Понедельник" << endl;
+    }
+    else if (day == 2) {
+        cout << "Вторник" << endl;
+    }
+    else if (day == 3) {
+        cout << "Среда" << endl;
+    }
+    else if (day == 4) {
+        cout << "Четверг" << endl;
+    }
+    else if (day == 5) {
+        cout << "Пятница" << endl;
+    }
+    else if (day == 6) {
+        cout << "Суббота" << endl;
+    }
+    else if (day == 7) {
+        cout << "Воскресенье" << endl;
+    }
+    else {
+        cout << "Ошибка" << endl;
+    }
+
+    switch (day) {
+    case 1:
+        cout << "Понедельник" << endl;
+        break;
+    case 2:
+        cout << "Вторник" << endl;
+        break;
+    case 3:
+        cout << "Среда" << endl;
+        break;
+    case 4:
+        cout << "Четверг" << endl;
+        break;
+    case 5:
+        cout << "Пятница" << endl;
+        break;
+    default:
+        cout << "Выходные" << endl;
+        break;
+    }
+}
+```
