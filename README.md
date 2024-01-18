@@ -498,3 +498,153 @@ int main() {
     }
 }
 ```
+
+# Перечисления (Enum) и оператор Switch
+Программа enum-color
+```C++
+#include <iostream>
+
+enum Color {
+    RED,
+    GREEN,
+    BLUE,
+    VIOLET,
+    YELLOW,
+    GREY
+};
+
+int main() {
+    Color myColor = GREY;
+
+    if (myColor == RED) {
+        std::cout << "The color is red." << std::endl;
+    }
+    else if (myColor == GREEN) {
+        std::cout << "The color is green." << std::endl;
+    }
+    else if (myColor == BLUE) {
+        std::cout << "The color is blue." << std::endl;
+    }
+
+    return 0;
+}
+```
+
+Программа enum-direction
+```C++
+#include <iostream>
+
+enum Direction {
+    UP,
+    DOWN,
+    LEFT,
+    RIGHT
+};
+
+void move(Direction dir) {
+
+    switch (dir) {
+    case UP:
+        std::cout << "Moving up." << std::endl;
+        break;
+    case DOWN:
+        std::cout << "Moving down." << std::endl;
+        break;
+    case LEFT:
+        std::cout << "Moving left." << std::endl;
+        break;
+    case RIGHT:
+        std::cout << "Moving right." << std::endl;
+        break;
+    default:
+        std::cout << "Invalid direction." << std::endl;
+    }
+}
+
+int main() {
+    move(UP);
+
+    return 0;
+}
+```
+
+Программа enum-months
+```C++
+#include <iostream>
+
+enum Month {
+    JANUARY = 1,
+    FEBRUARY,
+    MARCH,
+    APRIL,
+    MAY,
+    JUNE,
+    JULY,
+    AUGUST,
+    SEPTEMBER,
+    OCTOBER,
+    NOVEMBER,
+    DECEMBER
+};
+
+int main() {
+    Month currentMonth = MARCH;
+
+    std::cout << "The current month is: " << currentMonth << std::endl;
+
+    return 0;
+}
+```
+
+Программа enum-user-input
+```C++
+#include <iostream>
+
+enum Color {
+    RED,
+    GREEN,
+    BLUE
+};
+
+int main() {
+    setlocale(LC_ALL, "ru");
+
+    int userInput;
+
+    std::cout << "Введите цвет (0 - RED, 1 - GREEN, 2 - BLUE): ";
+    std::cin >> userInput;
+
+    /*
+    то же самое, что объвить три переменные
+    int red = 0;
+    int green = 1;
+    int blue = 2;
+
+    но при этом перечисление создает группу таких констант, объединяя по определенному признаку
+    */
+
+    // Проверяем введенное значение и присваиваем соответствующий цвет переменной
+    Color chosenColor;
+
+    switch (userInput) {
+    case 0:
+        chosenColor = RED;
+        break;
+    case 1:
+        chosenColor = GREEN;
+        break;
+    case 2:
+        chosenColor = BLUE;
+        break;
+    default:
+        std::cout << "Неверный ввод. Используется значение по умолчанию (RED)." << std::endl;
+        chosenColor = RED;
+        break;
+    }
+
+    // Теперь chosenColor содержит выбранный цвет
+    std::cout << "Выбранный цвет: " << chosenColor << std::endl;
+
+    return 0;
+}
+```
