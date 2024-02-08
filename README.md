@@ -648,3 +648,588 @@ int main() {
     return 0;
 }
 ```
+# Цикл while, примеры
+## Организация меню для мини-калькулятора
+```
+#include <iostream>
+using namespace std;
+int main()
+{
+	int answer, A, B, RES;
+
+	// запрос на выбор операции
+	cout << "\nSelect operation:\n";
+	cout << "\n 1 - if you want to see SUM.\n";
+	cout << "\n 2 - if you want to see DIFFERENCE.\n";
+	cout << "\n 3 - if you want to exit.\n";
+
+	cin >> answer;
+
+	while (answer != 3) { // проверка условия
+		switch (answer) {
+		case 1: // если пользователь выбрал
+			// сложение
+			cout << "Enter first digit:\n";
+			cin >> A;
+			cout << "Enter second digit:\n";
+			cin >> B;
+			RES = A + B;
+			cout << "\nAnswer: " << RES << "\n";
+			break; // остановка switch
+		case 2: // если пользователь выбрал
+			// вычитание
+			cout << "Enter first digit:\n";
+			cin >> A;
+			cout << "Enter second digit:\n";
+			cin >> B;
+
+			RES = A - B;
+			cout << "\nAnswer: " << RES << "\n";
+			break; // остановка switch
+		case 3: // если пользователь выбрал выход
+			cout << "\nEXIT!!!\n";
+			break;
+		default: // если выбранное действие
+			// некорректно
+			cout << "\nError!!! This operator isn’t"
+				" correct\n";
+		}
+		// запрос на выбор операции
+		cout << "\nSelect operation:\n";
+		cout << "\n 1 - if you want to see SUM.\n";
+		cout << "\n 2 - if you want to see DIFFERENCE.\n";
+		cout << "\n 3 - if you want to exit.\n";
+		cin >> answer;
+	}
+	cout << "\nBye. \n";
+	return 0;
+}
+```
+## Организация цикла while с управляющей переменной
+```
+#include <iostream>
+
+
+int main()
+{
+	// объявление управляющей переменной
+	int сounter = 0;
+
+	while (сounter < 2)// проверка утверждения // 0 < 2, 1 < 2, 2 < 2 - это ложь!!!
+	{
+		сounter++;// изменение управляющей переменной
+		// действие для повторения
+		// вы увидели ... чудо света
+		std::cout << "You seen " << сounter <<" miracle of world!!!\n";
+
+	}
+	std::cout << "Now, you can start your work.\n";
+	return 0;
+}
+```
+## Расчет порядкового номера максимальной и/или минимальной цифры в числе
+```
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main() {
+    int number;
+    cout << "Введите натуральное число, в котором все цифры различны: ";
+    cin >> number;
+
+    // Определение максимальной и минимальной цифры и их порядкового номера
+    int maxDigit = 0, minDigit = 9;
+    int maxDigitIndexFromEnd, maxDigitIndexFromStart, minDigitIndexFromEnd, minDigitIndexFromStart;
+    int tempNumber = number;
+    int indexFromEnd = 0;
+    while (tempNumber > 0) {
+        int digit = tempNumber % 10;
+        if (digit > maxDigit) {
+            maxDigit = digit;
+            maxDigitIndexFromEnd = indexFromEnd + 1; // Нумерация с единицы
+        }
+        if (digit < minDigit) {
+            minDigit = digit;
+            minDigitIndexFromEnd = indexFromEnd + 1; // Нумерация с единицы
+        }
+        tempNumber /= 10;
+        indexFromEnd++;
+    }
+
+    // Определение порядкового номера с начала числа
+    int numberOfDigits = log10(number) + 1; // дает количество цифр в числе
+    maxDigitIndexFromStart = numberOfDigits - maxDigitIndexFromEnd + 1;
+    minDigitIndexFromStart = numberOfDigits - minDigitIndexFromEnd + 1;
+
+    // Вывод результатов
+    cout << "Порядковый номер максимальной цифры считая от конца числа: " << maxDigitIndexFromEnd << endl;
+    cout << "Порядковый номер максимальной цифры считая от начала числа: " << maxDigitIndexFromStart << endl;
+    cout << "Порядковый номер минимальной цифры считая от конца числа: " << minDigitIndexFromEnd << endl;
+    cout << "Порядковый номер минимальной цифры считая от начала числа: " << minDigitIndexFromStart << endl;
+
+    return 0;
+}
+```
+
+# Цикл do while, примеры
+## Организация меню для мини-калькулятора
+```
+#include <iostream>
+using namespace std;
+int main()
+{
+	int answer, A, B, RES;
+
+	do { // вход в цикл
+		// запрос на выбор операции
+		cout << "\nSelect operation:\n";
+		cout << "\n 1 - if you want to see SUM.\n";
+		cout << "\n 2 - if you want to see DIFFERENCE.\n";
+		cout << "\n 3 - if you want to exit.\n";
+		cin >> answer;
+
+		// анализ действия
+		switch (answer) {
+		case 1: // если пользователь выбрал сложение
+			cout << "Enter first digit:\n";
+			cin >> A;
+			cout << "Enter second digit:\n";
+			cin >> B;
+			RES = A + B;
+			cout << "\nAnswer: " << RES << "\n";
+			break; // остановка switch
+		case 2: // если пользователь выбрал вычитание
+			cout << "Enter first digit:\n";
+			cin >> A;
+			cout << "Enter second digit:\n";
+			cin >> B;
+			RES = A - B;
+			cout << "\nAnswer: " << RES << "\n";
+			break; // остановка switch
+		case 3: // если пользователь выбрал выход
+			cout << "\nEXIT!!!\n";
+			break;
+		default: // если выбранное действие
+			// некорректно
+			cout << "\nError!!! This operator isn’t "
+				"correct\n";
+		}
+	} while (answer != 3);
+	cout << "\nBye. \n";
+	return 0;
+}
+```
+Настоятельно рекомендуется сравнить работу этого цикла с циклом while!
+## Игра "Угадать число в диапазоне"
+```
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	setlocale(LC_ALL, "ru");
+	int guess = 12;
+	int inputNum = 0;
+	int count = 0;
+	int choice = 1;
+
+	do {
+		cout << "Введите число от 1 до 500: ";
+		cin >> inputNum;
+
+		while (inputNum < 1 || inputNum > 500) {
+			cout << "Некорректное значение. Введите новое: ";
+			cin >> inputNum;
+		}
+
+		if (inputNum > guess) {
+			cout << "Ваше число больше загаданного!\n";
+			count++;
+		}
+		else if (inputNum < guess) {
+			cout << "Ваше число меньше загаданного!\n";
+			count++;
+		}
+		else {
+			cout << "Бинго!\n";
+			count++;
+			cout << "Количество попыток: " << count << endl;
+			choice = 0;
+		}
+
+		cout << "Хотите продолжить? 0 - если нет, иначе нажмите любую цифру\n";
+		cin >> choice;
+
+	} while (choice != 0);
+
+	cout << "Пока" << endl;
+}
+```
+
+# Цикл for, примеры
+## Работа цикла for
+```
+#include<iostream>
+using namespace std;
+
+int main() {
+	int count = 0;
+	for (; /* выполняется п.2, если условие ложно, выполняется п.4 */;)
+	{
+		/* выполняется п.3 */cout << "The student squatted " << count << " time\n";
+		count = count + 1;
+	}
+	// цикл выполняется до тех пор, пока истинно условие
+	return 0;
+}
+```
+
+## Особенность работы оператора break
+```
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	for (int x = 1; x < 4; x++)
+	{
+		//if (x == 4) {
+		//	break; // если x стал равен 4 - остановить цикл
+		//}
+		cout << x << " ";
+	}
+	
+	cout << "Bye!\n";
+	return 0;
+}
+```
+
+## Угадать число
+```
+#include <iostream>
+using namespace std;
+int main() {
+	// объявляем переменную с загаданным числом
+	int magicNum = 2;
+
+	cout << "==================================\n\n";
+	cout << " My magic number between 1 and 10\n";
+	cout << "==================================\n\n";
+	int user = 0;
+	for (int n = 1; n <= 5; n++)
+	{
+		cout << "Your number is -> ";
+		cin >> user;
+		// проверяем, угадал ли пользователь наше число если да, выводим поздравление и прерываем цикл
+		if (user == magicNum)
+		{
+			cout << "Congrats!!!\n";
+			break;
+		}
+		else
+		{
+			// иначе пользователь еще не отгадал
+			cout << "That’s not my number\n";
+		}
+		// если счетчик достиг 5, выводим сообщение
+		// попробовать сыграть снова
+		if (n == 5)
+		{
+			cout << "Try again later\n";
+		}
+	}
+	return 0;
+}
+```
+## Использование оператора continue
+```
+#include <iostream>
+using namespace std;
+int main()
+{
+	for (int i = 0; i < 26; i++)
+	{
+		if (i % 2 == 0) // если число делится на два
+			// без остатка
+		{
+			continue; // остановить итерацию цикла и перейти к i++
+		}
+		cout << i << " ";
+	}
+	cout << endl;
+	return 0;
+}
+```
+
+## Еще примеры цикла for
+```
+#include <iostream>
+
+using namespace std;
+
+/*
+	Часы бьют каждый час столько раз, сколько составляет текущее время.
+	Написать программу, которая подсчитает, сколько раз
+	пробьют часы за 12 часов.
+*/
+
+int main() {
+
+	int sum = 0;
+
+	for (int bom = 1; bom <= 12; bom++)
+	{
+		sum += bom; // накопление суммы ударов
+	}
+	// Часы пробили 78 раз.
+	cout << " Hours have punched " << sum << " times.\n";
+
+	return 0;
+}
+```
+
+```
+#include <iostream>
+#include <limits.h>
+
+using namespace std;
+
+/*
+	Пользователь с клавиатуры последовательно вводит
+	целые числа. Как только пользователь ввел 0, необходимо
+	показать на экран сумму всех введенных чисел.
+*/
+
+int main() {
+	int digit = INT_MIN, sum = 0;
+
+	//for (;;) { // реализация бесконечного цикла
+
+	//	cout << "Enter digit:";
+	//	cin >> digit; // ввод числа
+
+	//	if (digit == 0) // если введен 0
+	//		break; // остановить цикл, после выполнения break выходим из цикла!!
+	//	sum += digit; // накопление суммы
+	//}
+	//// показ результата
+	//cout << "Sum of digits " << sum << "\n\n";
+	
+	while (digit != 0) {
+		cout << "Enter num: ";
+		cin >> digit;
+		sum += digit;
+	}
+	cout << "Sum = " << sum;
+
+	return 0;
+}
+```
+
+```
+#include <iostream>
+
+using namespace std;
+
+/*
+	Написать программу, которая показывает все числа,
+	которые кратны числу, введённому с клавиатуры.
+*/
+
+int main() {
+	int digit;
+
+	cout << "Enter digit:";
+	cin >> digit;
+
+	// цикл перебирает числа от 2 до введенного числа
+	for (int i = 1; i < digit; i++) {
+
+		// если число не делится на текущее значение i без остатка -
+		// остановить данный шаг и перейти
+		// к следующему
+		if (digit % i != 0)
+			continue;
+
+		// вывести i на экран
+		cout << i << " ";
+	}
+	cout << endl << endl;
+	return 0;
+}
+```
+
+# Вложенные циклы
+```
+#include <iostream>
+
+using namespace std;
+
+/*
+	Написать программу, которая показывает все числа,
+	которые кратны числу, введённому с клавиатуры.
+*/
+
+int main() {
+
+	for (int i = 0; i < 7; i++)
+	{
+		for (int j = 0; j < 10; j++)
+		{
+			cout << "|###| ";
+		}
+		cout << endl;
+	}
+
+
+	return 0;
+}
+```
+
+```
+#include <iostream>
+using namespace std;
+
+/*
+	Написать программу, которая выводит на экран
+	таблицу умножения.
+*/
+int main()
+{
+	for (int i = 1; i < 10; i++)
+	{
+		for (int j = 1; j < 10; j++)
+		{
+			cout << i * j << "\t";
+		}
+		cout << "\n\n";
+	}
+	return 0;
+}
+```
+
+```
+#include <iostream>
+using namespace std;
+
+// Вывести на экран прямоугольник из символов 20 на 20.
+
+int main()
+{
+	int string = 1, starCount, length = 20;
+
+	while (string <= length)
+	{
+		starCount = 1;
+
+		while (starCount <= length)
+		{
+			cout << "*";
+			starCount++;
+		}
+		cout << "\n";
+		string++;
+	}
+	cout << "\n";
+	return 0;
+}
+```
+
+```
+#include <iostream>
+using namespace std;
+
+// Вывести на экран прямоугольник из символов 20 на 20.
+
+int main()
+{
+
+	for (size_t i = 0; i < 4; i++)
+	{
+		cout << "i: " << i << "\t";
+		for (size_t j = 0; j < 4; j++) 
+		{
+			//cout << " + ";
+			cout << "j: " << j << " ";
+		}
+		cout << endl;
+	}
+
+	return 0;
+}
+```
+
+```
+#include <iostream>
+
+using namespace std;
+/*
+Написать имитацию кассового аппарата для
+магазина, торгующего новогодними товарами. Кассир
+должен выбрать товар из списка, ввести его количество,
+затем выбрать следующий товар. По завершению ввода
+вывести на экран всю сумму покупки. В списке товаров должно быть не меньше
+4-х товаров, должна отображаться их цена. Предусмотреть
+неправильно вводимые данные.
+*/
+
+int main() {
+	setlocale(LC_ALL, "ru");
+
+	int option;
+
+	string good1 = "Макароны";
+	int price1 = 100;
+	string good2 = "Молоко";
+	int price2 = 70;
+	string good3 = "Конфеты";
+	int price3 = 100;
+	string good4 = "Шампунь";
+	int price4 = 200;
+	
+	do {
+		cout << "1. Начать обслуживание\n";
+		cout << "2. Закончить работу\n";
+		cin >> option;
+
+		if (option == 1) {
+			int goodOption;
+			int total = 0;
+			do {
+				cout << "Выберите товар:\n";
+				cout << "Товар 1: " << good1 << " " << price1 << "\n";
+				cout << "Товар 2: " << good2 << " " << price2 << "\n";
+				cout << "Товар 3: " << good3 << " " << price3 << "\n";
+				cout << "Товар 4: " << good4 << " " << price4 << "\n";
+				cout << "5. Закончить обслуживание\n";
+				cin >> goodOption;
+
+				switch (goodOption)
+				{
+				case 1:
+					total += price1;
+					break;
+				case 2:
+					total += price2;
+					break;
+				case 3:
+					total += price4;
+					break;
+				case 4:
+					total += price4;
+					break;
+				default:
+					break;
+				}
+				cout << "Промежуточный итог: " << total << "\n";
+			} while (goodOption != 5);
+			cout << "Итоговая сумма: " << total << "\n";
+			system("pause");
+		}
+		system("CLS");
+		
+	} while (option != 2);
+}
+```
