@@ -650,9 +650,11 @@ int main() {
 ```
 # Цикл while, примеры
 ## Организация меню для мини-калькулятора
-```
+```C++
 #include <iostream>
+
 using namespace std;
+
 int main()
 {
 	int answer, A, B, RES;
@@ -706,9 +708,8 @@ int main()
 }
 ```
 ## Организация цикла while с управляющей переменной
-```
+```C++
 #include <iostream>
-
 
 int main()
 {
@@ -721,16 +722,16 @@ int main()
 		// действие для повторения
 		// вы увидели ... чудо света
 		std::cout << "You seen " << сounter <<" miracle of world!!!\n";
-
 	}
 	std::cout << "Now, you can start your work.\n";
 	return 0;
 }
 ```
 ## Расчет порядкового номера максимальной и/или минимальной цифры в числе
-```
+```C++
 #include <iostream>
 #include <cmath>
+
 using namespace std;
 
 int main() {
@@ -774,13 +775,15 @@ int main() {
 
 # Цикл do while, примеры
 ## Организация меню для мини-калькулятора
-```
+```C++
 #include <iostream>
+
 using namespace std;
+
 int main()
 {
 	int answer, A, B, RES;
-
+	
 	do { // вход в цикл
 		// запрос на выбор операции
 		cout << "\nSelect operation:\n";
@@ -788,7 +791,7 @@ int main()
 		cout << "\n 2 - if you want to see DIFFERENCE.\n";
 		cout << "\n 3 - if you want to exit.\n";
 		cin >> answer;
-
+	
 		// анализ действия
 		switch (answer) {
 		case 1: // если пользователь выбрал сложение
@@ -820,9 +823,9 @@ int main()
 	return 0;
 }
 ```
-Настоятельно рекомендуется сравнить работу этого цикла с циклом while!
+Настоятельно рекомендуется сравнить пример работы этого цикла с аналогичным примером цикла while!
 ## Игра "Угадать число в диапазоне"
-```
+```C++
 #include <iostream>
 
 using namespace std;
@@ -869,8 +872,9 @@ int main() {
 
 # Цикл for, примеры
 ## Работа цикла for
-```
+```C++
 #include<iostream>
+
 using namespace std;
 
 int main() {
@@ -886,7 +890,7 @@ int main() {
 ```
 
 ## Особенность работы оператора break
-```
+```C++
 #include <iostream>
 
 using namespace std;
@@ -907,9 +911,11 @@ int main()
 ```
 
 ## Угадать число
-```
+```C++
 #include <iostream>
+
 using namespace std;
+
 int main() {
 	// объявляем переменную с загаданным числом
 	int magicNum = 2;
@@ -944,7 +950,7 @@ int main() {
 }
 ```
 ## Использование оператора continue
-```
+```C++
 #include <iostream>
 using namespace std;
 int main()
@@ -964,7 +970,7 @@ int main()
 ```
 
 ## Еще примеры цикла for
-```
+```C++
 #include <iostream>
 
 using namespace std;
@@ -990,7 +996,7 @@ int main() {
 }
 ```
 
-```
+```C++
 #include <iostream>
 #include <limits.h>
 
@@ -1028,7 +1034,7 @@ int main() {
 }
 ```
 
-```
+```C++
 #include <iostream>
 
 using namespace std;
@@ -1062,7 +1068,7 @@ int main() {
 ```
 
 # Вложенные циклы
-```
+```C++
 #include <iostream>
 
 using namespace std;
@@ -1088,8 +1094,9 @@ int main() {
 }
 ```
 
-```
+```C++
 #include <iostream>
+
 using namespace std;
 
 /*
@@ -1110,8 +1117,9 @@ int main()
 }
 ```
 
-```
+```C++
 #include <iostream>
+
 using namespace std;
 
 // Вывести на экран прямоугольник из символов 20 на 20.
@@ -1137,8 +1145,9 @@ int main()
 }
 ```
 
-```
+```C++
 #include <iostream>
+
 using namespace std;
 
 // Вывести на экран прямоугольник из символов 20 на 20.
@@ -1161,7 +1170,7 @@ int main()
 }
 ```
 
-```
+```C++
 #include <iostream>
 
 using namespace std;
