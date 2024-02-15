@@ -1301,3 +1301,55 @@ int main() {
 	std::cout << "\n";
 }
 ```
+## Пузырьковая сортировка массива
+```C++
+#include <iostream>
+#include <random>
+
+int main() {
+	setlocale(LC_ALL, "ru");
+
+	const int SIZE = 10;
+
+	int arr[SIZE];
+	// Создаём генератор случайных чисел
+	std::random_device rd; // объект класса random_device с именем rd
+	std::mt19937 gen(rd()); // генератор случайных чисел с именем gen, создание первого случайного числа
+	std::uniform_int_distribution<> dis(1, 100); // Равномерное распределение от 1 до 100
+
+	// заполнение массива случайным образом
+	for (size_t i = 0; i < SIZE; i++)
+	{
+		arr[i] = dis(gen);
+	}
+
+	std::cout << "Вывод элементов массива:\n";
+
+	for (size_t i = 0; i < SIZE; i++)
+	{
+		std::cout << arr[i] << " ";
+	}
+	std::cout << "\n";
+
+	// сортировка массива по возрастанию
+
+	int temp;
+	for (size_t i = 0; i < SIZE - 1; i++)
+	{
+		for (size_t j = 0; j < SIZE - i - 1; j++) {
+			if (arr[j] > arr[j + 1]) {
+				temp = arr[j];
+				arr[j] = arr[j + 1];
+				arr[j + 1] = temp;
+			}
+		}
+	}
+
+	std::cout << "\nВывод элементов массива сортировки:\n";
+	for (size_t i = 0; i < SIZE; i++)
+	{
+		std::cout << arr[i] << " ";
+	}
+	std::cout << "\n";
+}
+```
