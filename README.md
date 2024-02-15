@@ -1290,13 +1290,13 @@ int main() {
 	std::cout << "\Заполнение элементов массива случайным образом:\n";
 	for (size_t i = 0; i < SIZE; i++)
 	{
-		arr2[i] = dis(gen);
+		arr[i] = dis(gen);
 	}
 
 	std::cout << "\nВывод элементов массива:\n";
 	for (size_t i = 0; i < SIZE; i++)
 	{
-		std::cout << arr2[i] << " ";
+		std::cout << arr[i] << " ";
 	}
 	std::cout << "\n";
 }
