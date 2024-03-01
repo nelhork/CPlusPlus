@@ -1465,3 +1465,96 @@ int main()
 
 }
 ```
+Решение домашнего задания # 3a
+```C++
+// в этом файле содержатся rand и srand
+#include<stdlib.h>
+#include<time.h> 
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "ru");
+	srand(time(NULL));
+
+	const int rows = 3;
+	const int cols = 3;
+
+	int A[rows][cols];
+
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < cols; j++)
+		{
+
+			A[i][j] = rand() % 100;
+			cout << A[i][j] << " ";
+		}
+		cout << "\n\n";
+	}
+	cout << "\n";
+
+	int max = INT_MIN;
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < cols; j++)
+		{
+			if (j >= i) {
+				if (A[i][j] > max) {
+					max = A[i][j];
+				}
+			}
+		}
+	}
+	cout << "Максимальный элемент в правой части главной диагонали = " << max << endl;
+}
+```
+Решение домашнего задания # 3c
+```C++
+// в этом файле содержатся rand и srand
+#include<stdlib.h>
+#include<time.h> 
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "ru");
+	srand(time(NULL));
+
+	const int rows = 3;
+	const int cols = 3;
+
+	int A[rows][cols];
+
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < cols; j++)
+		{
+
+			A[i][j] = rand() % 100;
+			cout << A[i][j] << " ";
+		}
+		cout << "\n\n";
+	}
+	cout << "\n";
+
+	int max = INT_MIN;
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < cols; j++)
+		{
+			if (j >= i && i + j <= rows - 1) {
+				//if (A[i][j] > max) {
+				//	max = A[i][j];
+				//}
+				cout << A[i][j] << " ";
+			}
+		}
+	}
+	//cout << "Максимальный элемент в правой части главной диагонали = " << max << endl;
+}
+```
